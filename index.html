@@ -1,316 +1,326 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة اللغات التعليمية الذكية - جميع الصفوف</title>
-    <style>
-        :root {
-            --primary: #1b4f72;
-            --secondary: #2e86c1;
-            --accent: #28b463;
-            --ai-color: #8e44ad;
-            --bg-color: #f4f7f6;
-            --card-bg: #ffffff;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نظام تسجيل الغياب - المعلم أحمد محمد سري</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font: Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#1e40af',
+              lightBlue: '#3b82f6',
+              bg: '#f8fafc',
+              card: '#ffffff'
+            }
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif']
+          }
         }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-color); margin: 0; padding: 20px; color: #333; }
-        header { background: var(--primary); color: white; padding: 30px; border-radius: 10px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        header h1 { margin: 0 0 10px 0; font-size: 2em; }
-        header p { margin: 0; font-size: 1.1em; opacity: 0.9; }
-        
-        .study-tip { background: #d4efdf; border: 1px solid #a9dfbf; padding: 15px; border-radius: 8px; margin: 25px 0; text-align: center; font-weight: bold; color: #145a32; }
-
-        .stage-container { margin-top: 35px; }
-        .stage-title { background: var(--secondary); color: white; padding: 12px 20px; border-radius: 6px; font-size: 1.4em; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        
-        .grades-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        
-        .card { background: var(--card-bg); border: 1px solid #ddd; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
-        
-        .card h3 { color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--secondary); padding-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
-        .card h3 span { font-size: 0.7em; background: #eaf2f8; color: var(--secondary); padding: 3px 8px; border-radius: 4px; }
-        
-        .subjects-list { list-style-type: none; padding: 0; text-align: left; direction: ltr; font-size: 0.9em; color: #444; background: #f9f9f9; padding: 10px; border-radius: 6px; margin: 10px 0; }
-        .subjects-list li { margin-bottom: 5px; border-bottom: 1px solid #eee; padding-bottom: 3px; }
-        .arabic-sub { direction: rtl; text-align: right; }
-        
-        .ai-box { background: #f4ecf7; border: 1px solid #d2b4de; padding: 10px; border-radius: 6px; margin-top: 10px; font-size: 0.85em; color: #512e5f; }
-        .ai-title { color: var(--ai-color); font-weight: bold; margin-bottom: 4px; display: flex; align-items: center; gap: 5px; }
-        
-        .btn-group { display: flex; gap: 8px; margin-top: 15px; }
-        .btn { flex: 1; display: block; background: var(--accent); color: white; padding: 9px; text-align: center; text-decoration: none; border-radius: 6px; font-size: 0.9em; font-weight: bold; transition: background 0.2s; }
-        .btn-ai { background: var(--ai-color); }
-        .btn:hover { opacity: 0.85; }
-    </style>
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f1f5f9;
+      color: #0f172a;
+    }
+  </style>
 </head>
-<body>
+<body class="min-h-screen p-4 sm:p-6 md:p-10 flex flex-col items-center justify-start">
 
-    <header>
-        <h1>منصة اللغات التعليمية الذكية (Languages & AI Hub)</h1>
-        <p>دليلك المتكامل لمناهج مدارس اللغات والتجريبي من الأولى ابتدائي حتى الثانية ثانوي مع مساعد ذكي لكل صف</p>
-    </header>
+  <div class="w-full max-w-xl space-y-6">
 
-    <div class="study-tip">
-        ⏱️ نظام المذاكرة المعتمد في المنصة: <strong>45 دقيقة تركيز تام</strong> يتبعها <strong>15 دقيقة راحة واسترخاء</strong> لضمان أعلى استيعاب!
+    <!-- Header Section -->
+    <div class="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-6 rounded-3xl shadow-lg text-center space-y-2">
+      <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mx-auto text-2xl">
+        <i class="fa-solid fa-chalkboard-user"></i>
+      </div>
+      <span class="text-xs font-bold text-blue-200 tracking-wider">نظام متابعة الحصص الشهرية (8 حصص)</span>
+      <h1 class="text-2xl sm:text-3xl font-black">المعلم / أحمد محمد سري</h1>
     </div>
 
-    <!-- ================= المرحلة الابتدائية ================= -->
-    <div class="stage-container">
-        <div class="stage-title">🎒 Primary Stage (المرحلة الابتدائية)</div>
-        <div class="grades-grid">
-            
-            <!-- الصف الأول الابتدائي -->
-            <div class="card">
-                <div>
-                    <h3>Grade 1 <span>الابتدائية</span></h3>
-                    <ul class="subjects-list">
-                        <li>Arabic Language <span class="arabic-sub">(عربي)</span></li>
-                        <li>English Language</li>
-                        <li>Math</li>
-                        <li>Discover</li>
-                        <li>Religion <span class="arabic-sub">(دين)</span></li>
-                    </ul>
-                    <div class="ai-box">
-                        <div class="ai-title">🤖 Grade 1 AI Assistant:</div>
-                        مساعد تفاعلي لشرح الحروف، تأسيس الكلمات، وأساسيات الـ Math بطرق ممتعة وبسيطة.
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <a href="#g1-subjects" class="btn">المناهج والملخصات</a>
-                    <a href="#g1-ai" class="btn btn-ai">اسأل الـ AI</a>
-                </div>
-            </div>
+    <!-- Attendance Form Card -->
+    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-md border border-slate-200 space-y-6">
+      
+      <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+        <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+          <i class="fa-solid fa-calendar-check text-blue-600"></i>
+          تسجيل حصة / غياب جديد
+        </h2>
+        <span class="text-xs bg-blue-50 text-blue-700 font-bold px-3 py-1 rounded-full border border-blue-100">
+          الشهر = 8 حصص
+        </span>
+      </div>
 
-            <!-- الصف الثاني الابتدائي -->
-            <div class="card">
-                <div>
-                    <h3>Grade 2 <span>الابتدائية</span></h3>
-                    <ul class="subjects-list">
-                        <li>Arabic Language <span class="arabic-sub">(عربي)</span></li>
-                        <li>English Language</li>
-                        <li>Math</li>
-                        <li>Discover</li>
-                        <li>Religion <span class="arabic-sub">(دين)</span></li>
-                    </ul>
-                    <div class="ai-box">
-                        <div class="ai-title">🤖 Grade 2 AI Assistant:</div>
-                        يساعدك في حل تمارين الجمع والطرح، وجمل القراءة وقواعد الـ English المبسطة.
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <a href="#g2-subjects" class="btn">المناهج والملخصات</a>
-                    <a href="#g2-ai" class="btn btn-ai">اسأل الـ AI</a>
-                </div>
-            </div>
-
-            <!-- الصف الثالث الابتدائي -->
-            <div class="card">
-                <div>
-                    <h3>Grade 3 <span>الابتدائية</span></h3>
-                    <ul class="subjects-list">
-                        <li>Arabic Language <span class="arabic-sub">(عربي)</span></li>
-                        <li>English Language</li>
-                        <li>Math</li>
-                        <li>Discover</li>
-                        <li>Religion <span class="arabic-sub">(دين)</span></li>
-                    </ul>
-                    <div class="ai-box">
-                        <div class="ai-title">🤖 Grade 3 AI Assistant:</div>
-                        خبير في تبسيط جداول الضرب، مفاهيم مادة الـ Discover، والقصص القصيرة.
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <a href="#g3-subjects" class="btn">المناهج والملخصات</a>
-                    <a href="#g3-ai" class="btn btn-ai">اسأل الـ AI</a>
-                </div>
-            </div>
-
-            <!-- الصف الرابع الابتدائي -->
-            <div class="card">
-                <div>
-                    <h3>Grade 4 <span>الابتدائية</span></h3>
-                    <ul class="subjects-list">
-                        <li>Arabic, English, Math, Science</li>
-                        <li>Social Studies, ICT, Skills, Religion</li>
-                    </ul>
-                    <div class="ai-box">
-                        <div class="ai-title">🤖 Grade 4 AI Assistant:</div>
-                        متخصص في تبسيط مصطلحات الـ Science والـ Math المعقدة بطريقة تفاعلية سلسة.
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <a href="#g4-subjects" class="btn">المناهج والملخصات</a>
-                    <a href="#g4-ai" class="btn btn-ai">اسأل الـ AI</a>
-                </div>
-            </div>
-
-            <!-- الصف الخامس الابتدائي -->
-            <div class="card">
-                <div>
-                    <h3>Grade 5 <span>الابتدائية</span></h3>
-                    <ul class="subjects-list">
-                        <li>Arabic, English, Math, Science</li>
-                        <li>Social Studies, ICT, Skills, Religion</li>
-                    </ul>
-                    <div class="ai-box">
-                        <div class="ai-title">🤖 Grade 5 AI Assistant:</div>
-                        مساعد خبير لحل مسائل الكسور، وحدات القياس، ومراجعة تجارب الـ Science.
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <a href="#g5-subjects" class="btn">المناهج والملخصات</a>
-                    <a href="#g5-ai" class="btn btn-ai">اسأل الـ AI</a>
-                </div>
-            </div>
-
-            <!-- الصف السادس الابتدائي -->
-            <div class="card">
-                <div>
-                    <h3>Grade 6 <span>الابتدائية</span></h3>
-                    <ul class="subjects-list">
-                        <li>Arabic, English, Math, Science</li>
-                        <li>Social Studies, ICT, Skills, Religion</li>
-                    </ul>
-                    <div class="ai-box">
-                        <div class="ai-title">🤖 Grade 6 AI Assistant:</div>
-                        يساعدك في مراجعة منهج الـ Science المتقدم وقواعد الـ Grammar باللغة الإنجليزية.
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <a href="#g6-subjects" class="btn">المناهج والملخصات</a>
-                    <a href="#g6-ai" class="btn btn-ai">اسأل الـ AI</a>
-                </div>
-            </div>
-
+      <form id="attendanceForm" class="space-y-4">
+        
+        <!-- Student Name Input -->
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1.5">اسم الطالب</label>
+          <div class="relative">
+            <i class="fa-solid fa-user absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input type="text" id="studentName" required placeholder="أدخل اسم الطالب هنا"
+              class="w-full pr-10 pl-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 font-bold focus:outline-none focus:border-blue-600 focus:bg-white transition-all text-sm">
+          </div>
         </div>
-    </div>
 
-    <!-- ================= المرحلة الإعدادية ================= -->
-    <div class="stage-container">
-        <div class="stage-title">🏫 Preparatory Stage (المرحلة الإعدادية - لغات)</div>
-        <div class="grades-grid">
-            
-            <!-- الأول الإعدادي -->
-            <div class="card">
-                <div>
-                    <h3>1st Preparatory <span>الأول الإعدادي</span></h3>
-                    <ul class="subjects-list">
-                        <li>Arabic Language <span class="arabic-sub">(عربي)</span></li>
-                        <li>English Language</li>
-                        <li><strong>Second Foreign Language (German / French)</strong></li>
-                        <li>Math (Algebra & Geometry)</li>
-                        <li>Science (Physics, Chem, Bio)</li>
-                        <li>Social Studies, Computer, Religion</li>
-                    </ul>
-                    <div class="ai-box">
-                        <div class="ai-title">🤖 1st Prep AI Assistant:</div>
-                        خبير في قوانين الجبر والهندسة، القواعد الألمانية/الفرنسية، وأسئلة الـ Science.
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <a href="#prep1-subjects" class="btn">المناهج والملخصات</a>
-                    <a href="#prep1-ai" class="btn btn-ai">اسأل الـ AI</a>
-                </div>
-            </div>
-
-            <!-- الثاني الإعدادي -->
-            <div class="card">
-                <div>
-                    <h3>2nd Preparatory <span>الثاني الإعدادي</span></h3>
-                    <ul class="subjects-list">
-                        <li>Arabic Language <span class="arabic-sub">(عربي)</span></li>
-                        <li>English Language</li>
-                        <li><strong>Second Foreign Language (German / French)</strong></li>
-                        <li>Math (Algebra & Geometry)</li>
-                        <li>Science (Physics, Chem, Bio)</li>
-                        <li>Social Studies, Computer, Religion</li>
-                    </ul>
-                    <div class="ai-box">
-                        <div class="ai-title">🤖 2nd Prep AI Assistant:</div>
-                        يساعدك في حل مسائل التحليل، نظريات الهندسة، وتجارب الفيزياء باللغة الإنجليزية.
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <a href="#prep2-subjects" class="btn">المناهج والملخصات</a>
-                    <a href="#prep2-ai" class="btn btn-ai">اسأل الـ AI</a>
-                </div>
-            </div>
-
-            <!-- الثالث الإعدادي -->
-            <div class="card">
-                <div>
-                    <h3>3rd Preparatory <span>الثالث الإعدادي</span></h3>
-                    <ul class="subjects-list">
-                        <li>Arabic Language <span class="arabic-sub">(عربي)</span></li>
-                        <li>English Language</li>
-                        <li><strong>Second Foreign Language (German / French)</strong></li>
-                        <li>Math, Science, Social Studies</li>
-                        <li>Computer, Religion</li>
-                    </ul>
-                    <div class="ai-box">
-                        <div class="ai-title">🤖 3rd Prep AI Assistant:</div>
-                        مساعد خاص للشهادة الإعدادية لحل محافظات السنين السابقة وأسئلة الفهم العالي.
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <a href="#prep3-subjects" class="btn">المناهج والملخصات</a>
-                    <a href="#prep3-ai" class="btn btn-ai">اسأل الـ AI</a>
-                </div>
-            </div>
-
+        <!-- Date Input -->
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1.5">تاريخ الحصة / اليوم</label>
+          <div class="relative">
+            <i class="fa-solid fa-calendar-days absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input type="date" id="lessonDate" required
+              class="w-full pr-10 pl-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 font-bold focus:outline-none focus:border-blue-600 focus:bg-white transition-all text-sm">
+          </div>
         </div>
-    </div>
 
-    <!-- ================= المرحلة الثانوية ================= -->
-    <div class="stage-container">
-        <div class="stage-title">🎓 Secondary Stage (المرحلة الثانوية)</div>
-        <div class="grades-grid">
+        <!-- Attendance Status Radio -->
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-2">حالة الحضور</label>
+          <div class="grid grid-cols-2 gap-3">
             
-            <!-- الأول الثانوي -->
-            <div class="card">
-                <div>
-                    <h3>1st Secondary <span>الأول الثانوي</span></h3>
-                    <ul class="subjects-list">
-                        <li>Arabic & English Languages</li>
-                        <li><strong>Second Foreign Language (German / French / Italian / Spanish)</strong></li>
-                        <li>Math (Algebra, Trigonometry, Analytic Geo)</li>
-                        <li>Integrated Science / Sciences</li>
-                        <li>History, Geography, Philosophy & Logic</li>
-                    </ul>
-                    <div class="ai-box">
-                        <div class="ai-title">🤖 1st Sec AI Assistant:</div>
-                        مساعد ذكي مدرب على نظام التابلت الحديث وأسئلة الفهم والتحليل في جميع المواد.
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <a href="#sec1-subjects" class="btn">المناهج والملخصات</a>
-                    <a href="#sec1-ai" class="btn btn-ai">اسأل الـ AI</a>
-                </div>
-            </div>
+            <!-- Present Button -->
+            <label class="relative flex items-center justify-center p-3.5 rounded-2xl border-2 border-slate-200 cursor-pointer hover:border-green-500 has-[:checked]:border-green-600 has-[:checked]:bg-green-50/50 transition-all text-center">
+              <input type="radio" name="status" value="حاضر" checked class="sr-only">
+              <div class="flex items-center gap-2 text-slate-700 font-bold text-sm">
+                <i class="fa-solid fa-circle-check text-green-600 text-base"></i>
+                <span>حضر الحصة</span>
+              </div>
+            </label>
 
-            <!-- الثاني الثانوي -->
-            <div class="card">
-                <div>
-                    <h3>2nd Secondary <span>الثاني الثانوي</span></h3>
-                    <ul class="subjects-list">
-                        <li>Arabic, English, <strong>2nd Lang (German / French...)</strong></li>
-                        <li><strong>Sci Section:</strong> Pure Math, Mechanics, Physics, Chemistry, Biology</li>
-                        <li><strong>Arts Section:</strong> History, Geography, Psychology, Philosophy</li>
-                    </ul>
-                    <div class="ai-box">
-                        <div class="ai-title">🤖 2nd Sec AI Assistant:</div>
-                        خبير تفاضل وتكامل، ميكانيكا (Statics & Dynamics)، وقوانين الفيزياء المتقدمة.
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <a href="#sec2-subjects" class="btn">المناهج والملخصات</a>
-                    <a href="#sec2-ai" class="btn btn-ai">اسأل الـ AI</a>
-                </div>
-            </div>
+            <!-- Absent But Charged Button -->
+            <label class="relative flex items-center justify-center p-3.5 rounded-2xl border-2 border-slate-200 cursor-pointer hover:border-amber-500 has-[:checked]:border-amber-600 has-[:checked]:bg-amber-50/50 transition-all text-center">
+              <input type="radio" name="status" value="غائب (المعلم حضر)" class="sr-only">
+              <div class="flex items-center gap-2 text-slate-700 font-bold text-xs sm:text-sm">
+                <i class="fa-solid fa-user-xmark text-amber-600 text-base"></i>
+                <span>غائب (تُحسب عليه)</span>
+              </div>
+            </label>
 
+          </div>
+          <p class="text-[11px] text-slate-400 mt-2 text-center">
+            * في حالة الغياب مع حضور المعلم، تُخصم الحصة تلقائياً من الـ 8 حصص الشهرية.
+          </p>
         </div>
+
+        <!-- Submit Button -->
+        <button type="submit" 
+          class="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3.5 rounded-xl shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 text-base">
+          <i class="fa-solid fa-plus-circle"></i>
+          <span>تسجيل الحصة / الغياب</span>
+        </button>
+      </form>
+
     </div>
+
+    <!-- Student Summary Card -->
+    <div class="bg-white p-6 rounded-3xl shadow-md border border-slate-200 space-y-4">
+      
+      <div class="flex items-center justify-between">
+        <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+          <i class="fa-solid fa-calculator text-blue-600"></i>
+          ملخص الحصص للشهر الحقيقي
+        </h3>
+        <button onclick="searchStudent()" class="text-xs text-blue-600 font-bold hover:underline">
+          تحديث / عرض الطالب
+        </button>
+      </div>
+
+      <!-- Result Display Box -->
+      <div id="summaryCard" class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4 text-center">
+        <p class="text-xs text-slate-500 font-bold">اكتب اسم الطالب فوق للبدء أو رؤية حسابه</p>
+      </div>
+
+    </div>
+
+    <!-- Simple History List -->
+    <div class="bg-white p-6 rounded-3xl shadow-md border border-slate-200 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+          <i class="fa-solid fa-list-check text-slate-600"></i>
+          سجل الحصص المسجلة
+        </h3>
+        <button onclick="clearAllData()" class="text-xs text-red-500 hover:underline font-bold">
+          مسح السجل
+        </button>
+      </div>
+
+      <div id="logsList" class="space-y-2 max-h-60 overflow-y-auto pr-1">
+        <!-- Records render here -->
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'teacher_sery_attendance_data';
+
+    // Set default date to today
+    document.getElementById('lessonDate').valueAsDate = new Date();
+
+    // Get Data from LocalStorage
+    function getData() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? JSON.parse(saved) : [];
+    }
+
+    // Save Data to LocalStorage
+    function saveData(data) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    // Handle Form Submit
+    document.getElementById('attendanceForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('studentName').value.trim();
+      const date = document.getElementById('lessonDate').value;
+      const status = document.querySelector('input[name="status"]:checked').value;
+
+      if (!name || !date) return;
+
+      const records = getData();
+      
+      records.push({
+        id: Date.now(),
+        teacher: 'أحمد محمد سري',
+        student: name,
+        date: date,
+        status: status // 'حاضر' or 'غائب (المعلم حضر)'
+      });
+
+      saveData(records);
+
+      updateSummary(name);
+      renderLogs();
+      
+      // Feedback
+      alert(`تم تسجيل الحصة بنجاح للطالب: ${name}`);
+    });
+
+    // Student Summary Calculation
+    function searchStudent() {
+      const name = document.getElementById('studentName').value.trim();
+      if (!name) {
+        alert('يرجى كتابة اسم الطالب في الخانة أولاً');
+        return;
+      }
+      updateSummary(name);
+    }
+
+    function updateSummary(studentName) {
+      const records = getData();
+      const studentRecords = records.filter(r => r.student.toLowerCase() === studentName.toLowerCase());
+
+      const totalLessonsInMonth = 8;
+      // All recorded sessions (Present or Absent with teacher present) count as consumed lessons
+      const consumedLessons = studentRecords.length;
+      const remainingLessons = Math.max(0, totalLessonsInMonth - consumedLessons);
+
+      const summaryCard = document.getElementById('summaryCard');
+
+      if (consumedLessons === 0) {
+        summaryCard.innerHTML = `
+          <p class="text-xs text-slate-500 font-bold">لا يوجد حصص مسجلة بعد للطالب: <span class="text-blue-700">${studentName}</span></p>
+        `;
+        return;
+      }
+
+      const isFinished = remainingLessons === 0;
+
+      summaryCard.innerHTML = `
+        <div class="text-right border-b border-slate-200 pb-3">
+          <span class="text-xs text-slate-400 font-bold block">الطالب:</span>
+          <span class="text-lg font-black text-slate-800">${studentName}</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-center">
+          <div class="bg-blue-50 p-3 rounded-xl border border-blue-100">
+            <span class="text-[11px] font-bold text-blue-600 block">الحصص المستهلكة</span>
+            <span class="text-2xl font-black text-blue-900">${consumedLessons} <span class="text-xs font-normal text-slate-500">من 8</span></span>
+          </div>
+
+          <div class="${isFinished ? 'bg-red-50 border-red-100' : 'bg-green-50 border-green-100'} p-3 rounded-xl border">
+            <span class="text-[11px] font-bold ${isFinished ? 'text-red-600' : 'text-green-600'} block">الحصص المتبقية</span>
+            <span class="text-2xl font-black ${isFinished ? 'text-red-700' : 'text-green-800'}">${remainingLessons} <span class="text-xs font-normal text-slate-500">حصة</span></span>
+          </div>
+        </div>
+
+        ${isFinished ? `<p class="text-xs font-bold text-red-600 bg-red-100/60 p-2 rounded-lg">⚠️ انتهى اشتراك الـ 8 حصص لهذا الطالب لهذا الشهر.</p>` : ''}
+      `;
+    }
+
+    // Render Recent Logs
+    function renderLogs() {
+      const records = getData().reverse(); // show latest first
+      const container = document.getElementById('logsList');
+
+      if (records.length === 0) {
+        container.innerHTML = `<p class="text-xs text-slate-400 text-center py-4">لا توجد غيابات أو حصص مسجلة حتى الآن.</p>`;
+        return;
+      }
+
+      container.innerHTML = records.map(r => `
+        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+          <div>
+            <span class="font-bold text-slate-800 block">${r.student}</span>
+            <span class="text-[10px] text-slate-400">${r.date}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="font-bold px-2.5 py-1 rounded-lg ${r.status.includes('حاضر') ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-800'}">
+              ${r.status}
+            </span>
+            <button onclick="deleteRecord(${r.id})" class="text-slate-400 hover:text-red-500">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Delete single record
+    function deleteRecord(id) {
+      let records = getData();
+      records = records.filter(r => r.id !== id);
+      saveData(records);
+      renderLogs();
+      const currentName = document.getElementById('studentName').value.trim();
+      if (currentName) updateSummary(currentName);
+    }
+
+    // Clear All
+    function clearAllData() {
+      if (confirm('هل أنت تأكد من مسح جميع السجلات المسجلة؟')) {
+        localStorage.removeItem(STORAGE_KEY);
+        renderLogs();
+        document.getElementById('summaryCard').innerHTML = `<p class="text-xs text-slate-500 font-bold">تم مسح السجل بنجاح</p>`;
+      }
+    }
+
+    // Auto-search on typing student name
+    document.getElementById('studentName').addEventListener('input', function(e) {
+      if (e.target.value.trim()) {
+        updateSummary(e.target.value.trim());
+      }
+    });
+
+    // Initial Load
+    renderLogs();
+  </script>
 
 </body>
 </html>
